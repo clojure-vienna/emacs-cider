@@ -3,6 +3,11 @@
 This configuration is part of the `Emacs for Clojure` presentation for
 clojure-vienna.
 
+## Prerequisites
+
+- Emacs 25
+- Java 8
+
 ## Usage
 
 Either place `.emacs.d` inside you home directory or start emacs with
@@ -65,6 +70,15 @@ pressing `ESC`.
   - C-x 3 : Split horizontal
   - C-x o : Cycle through windows
   - q : in many read-only buffers, this closes the popup window
+
+- Mark / Copy / Paste
+  - C-SPC : set mark
+  - M-w : copy
+  - C-w : cut
+  - C-y : paste
+  - M-y : cycle pastes (after paste)
+  - C-x h : select whole buffer
+
 
 ## Elisp
 
@@ -122,6 +136,7 @@ the presentation.
 
 - M-: : eval-expression
 - C-M-x : eval-defun
+- C-x C-e : eval last sexpr
 - M-x eval-buffer
 - M-x toggle-debug-on-error
 - M-x ielm
@@ -130,6 +145,32 @@ the presentation.
 See `Help` keybindings above on how to browse documentation.
 
 ## Clojure + Emacs
+
+Cider is the bridge between Clojure and Emacs. It lets Emacs
+communicate with Clojure process via Nrepl.
+
+Here we don't focus on the nrepl wire protocol, but rather on how
+Nrepl's extensibility is used to create a full IDE-like experience.
+
+### Cool Cider shortcuts
+
+Please refer to the [cider docs](https://cider.readthedocs.io/en/latest/)
+
+- C-M-x : eval toplevel form
+- C-x C-e : eval last sexpr (use this within (comment) forms)
+- C-c C-k : load buffer
+- M-. : goto definition
+- M-, : come back from definition
+- C-c C-d d, C-c C-d C-d : cider-doc
+- C-u C-M-x : instrument toplevel form
+
+### Refactoring
+
+When used with clj-refactor + refactor-nrepl, Cider users even get access to powerful
+refactoring methods based on `tools.analyzer`:
+
+Unfortunately, refactor-nrepl is quite unstable and the more powerful
+refactorings break often with updates.
 
 
 ## Emacs Tips & Tricks

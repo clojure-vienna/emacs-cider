@@ -1,6 +1,7 @@
 (ns cljvie.cider-project
   (:require [clojure.tools.nrepl.server :refer [start-server default-handler]]
             [cider.nrepl :refer [cider-middleware]]
+            [refactor-nrepl.middleware :refer [wrap-refactor]]
             [clojure.pprint :refer [pprint]]))
 
 (defn pprint-str [o]
@@ -16,6 +17,8 @@
 (defn -main [port-s]
   (start-server
    :port (Long/parseLong port-s)
-   :handler (apply default-handler (cons #'cljvie-middleware
-                                         (map resolve cider-middleware))))
+   :handler (apply default-handler
+                   (list* #'cljvie-middleware
+                          #'wrap-refactor
+                          (map resolve cider-middleware))))
   (println "Started nrepl server on" port-s))
