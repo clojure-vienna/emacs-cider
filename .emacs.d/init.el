@@ -54,3 +54,10 @@
    ("C--" text-scale-decrease)))
 
 (add-hook 'emacs-startup-hook 'cljvie-startup)
+
+(require 'presentation)
+
+(cljvie-map-bindings
+ global-map
+ '(("M-[" presentation-prev-page)
+   ("M-]" presentation-next-page)))
