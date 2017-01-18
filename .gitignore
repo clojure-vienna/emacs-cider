@@ -4,3 +4,5 @@
 /.smex-items
 /.emacs.d/ido.last
 /.emacs.d/recentf
+/cider-project/target
+/.emacs.d/nrepl-history
