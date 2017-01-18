@@ -18,7 +18,7 @@
   (require 'clj-refactor)
   (cljvie-map-bindings
    clojure-mode-map
-   ("C-c TAB" 'cider-repl-indent-and-complete-symbol))
+   '(("C-c TAB" 'cider-repl-indent-and-complete-symbol)))
   (eldoc-mode)
   (clj-refactor-mode 1)
   (cljr-add-keybindings-with-prefix "C-c r")
@@ -40,7 +40,7 @@
   (add-hook 'clojurescript-mode-hook 'cljvie-clojure-mode)
   (add-hook 'emacs-lisp-mode-hook 'cljvie-lisp-mode)
   ;; Load hooks
-  (eval-after-load "cider" 'cljvie-on-cider-load)
+  (eval-after-load "cider" '(cljvie-on-cider-load))
   ;; Issue startup message
   (message "Cljvie configuration loaded. Make yourself @ ~"))
 
