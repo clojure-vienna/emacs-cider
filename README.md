@@ -37,6 +37,9 @@ pressing `ESC`.
   - C-/ : undo
   - M-x customize-{group,variable} : use Emacs' customization system
   - C-] : escape recursive edit (elisp debugger)
+  - C-u : Numeric argument prefix (universal)
+  - C-q : Quoting prefix to insert control characters
+  - C-j : Enter, for when enter would mean something else
 
 - Movement / Navigation
   - C-r, C-s : Search forward, Search backward
@@ -67,6 +70,26 @@ pressing `ESC`.
 
 `;;; -*- lexical-binding: t -*-`
 
+Lexical binding is a recent feature of Elisp, so it has to be
+activated by putting this comment at the beginning of `.el` files.
+
+Elisp is a Lisp-2: You can't take the value of a function, instead you
+use funcall on a symbol or lambda:
+
+Clojure:
+    (let [f first
+	      g #(second %)
+		  lst '(4 5 6)]
+	  (list (f lst)
+	        (g lst)))
+
+Elisp:
+    (let ((f 'car)
+          (g (lambda (x) (cadr x)))
+          (lst '(4 5 6)))
+      (list (funcall f lst)
+            (funcall g lst)))
+
 ### Package Management
 
 If your distro doesn't provide (m)elpa packages (most don't), use
@@ -81,7 +104,7 @@ First thing, you'll want to do is to add melpa as a package source:
 
 Then invoke `M-x list-packages` and install the packages we need for
 the presentation.
-
+
 - Key Bindings
   - i : mark for installation
   - d : mark for deletion
@@ -102,6 +125,7 @@ the presentation.
 - M-x eval-buffer
 - M-x toggle-debug-on-error
 - M-x ielm
+- C-u C-M-x : instrument defun
 
 See `Help` keybindings above on how to browse documentation.
 
@@ -116,3 +140,5 @@ Use smex as an `M-x` replacement.
 
 Use org-mode for organizing your thoughts, project planning and time
 tracking.
+
+Use ibuffer as a `C-x C-b` replacement.
