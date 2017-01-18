@@ -51,7 +51,9 @@
    ("C-c q" bury-buffer)
    ("C-c n" make-frame)
    ("C-+" text-scale-increase)
-   ("C--" text-scale-decrease)))
+   ("C--" text-scale-decrease)
+   ("C-h C-f" find-function)
+   ("C-M-:" shell-command)))
 
 (add-hook 'emacs-startup-hook 'cljvie-startup)
 
